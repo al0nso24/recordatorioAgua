@@ -1,8 +1,6 @@
 import { useState } from "react";
 import * as Notifications from 'expo-notifications';
-import * as Device from 'expo-device';
-import Constants from 'expo-constants';
-import { View, Text, Button, StyleSheet, Platform } from 'react-native';
+import { View, Button, StyleSheet } from 'react-native';
 
 const [pendientes, setPendientes] = useState(0);
 
@@ -27,5 +25,18 @@ async function recordar(segundos) {
 
 
 export default function Agua(){
-    
+    return(
+        <View style={styles.container}>
+            <Button title="Beber agua" onPress={recordar()}>
+            </Button>
+        </View>
+    )
 }
+
+const styles = StyleSheet.create(({
+    container: {
+        flex: 1,
+        justifyContent: "center",
+        alignItems: "center"
+    }
+}))
