@@ -1,6 +1,6 @@
 import { useState } from "react";
 import * as Notifications from 'expo-notifications';
-import { View, Button, StyleSheet, Text } from 'react-native';
+import { View, StyleSheet, Text, TouchableOpacity } from 'react-native';
 
 export default function Agua() {
     const [idRecordatorio, setIdRecordatorio] = useState(null);
@@ -31,10 +31,12 @@ export default function Agua() {
         <View style={styles.container}>
             <Text style={styles.titulo}>Recuerda tomar agua</Text>
             <Text style={styles.textoClaro}>Te recordaré beber agua cada 30 minutos💧</Text>
-            <Button
-                title={idRecordatorio ? "Desactivar recordatorio" : "Activar cada 30 min"}
-                onPress={alternarRecordatorio}
-            />
+            <Text style={styles.textoClaro}>Pulsa el botón para activar el recordatorio</Text>
+            <TouchableOpacity style={styles.btn} onPress={alternarRecordatorio}>
+                <Text style={styles.txtBtn}>
+                    {idRecordatorio ? "Desactivar recordatorio" : "Activar"}
+                </Text>
+            </TouchableOpacity>
         </View>
     )
 }
@@ -56,5 +58,19 @@ const styles = StyleSheet.create(({
     textoClaro: {
         color: "#BDBDBD",
         fontWeight: "bold"
+    },
+
+    btn: {
+        backgroundColor: '#61c6f1',
+        borderColor: "#FFFFFF",
+        borderRadius: 90,
+        borderWidth: 3,
+        padding: 15
+    },
+
+    txtBtn: {
+        color: "#FFFFFF",
+        fontWeight: "bold",
+        fontSize: 14,
     }
 }))
