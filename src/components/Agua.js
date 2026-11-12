@@ -48,7 +48,11 @@ export default function Agua() {
         <View style={styles.container}>
             <Text style={styles.titulo}>Recuerda tomar agua</Text>
             <Text style={styles.textoClaro}>Te recordaré beber agua cada 30 minutos💧</Text>
-            <Text style={styles.textoClaro}>Pulsa el botón para activar el recordatorio</Text>
+            <Text style={styles.textoClaro}>
+                {idRecordatorio ? "Pulsa el botón para desactivar el recordatorio" 
+                :
+                "Pulsa el botón para activar el recordatorio"}
+            </Text>
             <TouchableOpacity style={styles.btn} onPress={alternarRecordatorio}>
                 <Text style={styles.txtBtn}>
                     {/*Si hay un identificador (si está activo) muestra "Desactivar"*/}
