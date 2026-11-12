@@ -3,6 +3,18 @@ import { useState } from "react";
 import * as Notifications from 'expo-notifications';
 import { View, StyleSheet, Text, TouchableOpacity } from 'react-native';
 
+Notifications.setNotificationHandler({ handleNotification: async () => ({
+    //Muestra la alerta
+    shouldShowBanner: true,
+    //La pone en lista/centro de notificaciones
+    shouldShowList: true,
+    //Reproduce el sonido de notificación
+    shouldPlaySound: true,
+    //No cambia el icono con un contador
+    shouldSetBadge: false,
+  }),
+});
+
 export default function Agua() {
     //Guarda el id de la notificación programada
     //Inicia como null (no activo)
@@ -24,17 +36,18 @@ export default function Agua() {
         //Si no hay un recordatorio activo, programa una notificación
         //await Notifications.scheduleNotificationAsync() crea la notificación
         const id = await Notifications.scheduleNotificationAsync({
-            //Define el título y el contenido de la notificación
+            //Define el título, el contenido y sonido de la notificación
             content: {
                 title: '💧 ¡Hora de tomar agua!',
-                body: 'Un vaso de agua te hará bien.'
+                body: 'Un vaso de agua te hará bien.',
+                sound: 'default'
             },
             //Indica cada cuanto tiempo se mostrará la notificación (en este caso)
             trigger: {
                 //Esto es para controlar los intervalos de tiempo
                 type: Notifications.SchedulableTriggerInputTypes.TIME_INTERVAL,
                 //30 minutos
-                seconds: 30 * 60,
+                seconds: 1 * 60,
                 //Se activa periódicamente
                 repeats: true
             }
