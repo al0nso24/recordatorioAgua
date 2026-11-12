@@ -3,18 +3,6 @@ import { useState } from "react";
 import * as Notifications from 'expo-notifications';
 import { View, StyleSheet, Text, TouchableOpacity } from 'react-native';
 
-Notifications.setNotificationHandler({ handleNotification: async () => ({
-    //Muestra la alerta
-    shouldShowBanner: true,
-    //La pone en lista/centro de notificaciones
-    shouldShowList: true,
-    //Reproduce el sonido de notificación
-    shouldPlaySound: true,
-    //No cambia el icono con un contador
-    shouldSetBadge: false,
-  }),
-});
-
 export default function Agua() {
     //Guarda el id de la notificación programada
     //Inicia como null (no activo)
@@ -47,7 +35,7 @@ export default function Agua() {
                 //Esto es para controlar los intervalos de tiempo
                 type: Notifications.SchedulableTriggerInputTypes.TIME_INTERVAL,
                 //30 minutos
-                seconds: 1 * 60,
+                seconds: 30 * 60,
                 //Se activa periódicamente
                 repeats: true
             }
